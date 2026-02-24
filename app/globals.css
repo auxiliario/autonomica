@@ -25,6 +25,7 @@
   --tag-active-bg: #1a3a2a;
   --tag-active-text: #5af0b1;
   --nav-bg: rgba(20, 20, 25, 0.92);
+  --nav-border: rgba(255, 255, 255, 0.06);
   --mono: 'JetBrains Mono', 'Fira Code', monospace;
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -47,6 +48,7 @@
   --tag-active-bg: #c8e8d8;
   --tag-active-text: #0a6a3a;
   --nav-bg: rgba(255, 255, 255, 0.92);
+  --nav-border: rgba(0, 0, 0, 0.06);
 }
 
 /* ── BASE ── */
@@ -71,7 +73,7 @@ strong { color: var(--text-bright); font-weight: 600; }
   z-index: 100;
   background: var(--nav-bg);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--nav-border);
   padding: 0 24px;
 }
 .nav-row {
@@ -86,7 +88,7 @@ strong { color: var(--text-bright); font-weight: 600; }
   justify-content: space-between;
   height: 44px;
 }
-.nav-row + .nav-row { border-top: 1px solid var(--border); }
+.nav-row + .nav-row { border-top: 1px solid var(--nav-border); }
 .nav-row-label {
   font-family: var(--mono);
   font-size: 0.6rem;
@@ -237,13 +239,16 @@ strong { color: var(--text-bright); font-weight: 600; }
 .learn-link { color: var(--accent); }
 .learn-link:hover { text-decoration: underline; }
 
-/* Learn callout - hero variant (bigger, bolder) */
+/* Learn callout - hero variant (bigger, bolder, with dividers) */
 .learn-callout-hero {
   display: flex;
   align-items: baseline;
   gap: 10px;
   font-family: var(--mono);
   margin-top: 20px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 .learn-callout-text {
   font-size: 1rem;

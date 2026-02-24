@@ -55,9 +55,9 @@ export default function HomePage() {
 
       {/* MANIFESTO */}
       <div className="manifesto" id="manifesto" style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px 48px" }}>
-        <div className="section-header">
-          <span className="section-title">Manifesto</span>
-        </div>
+        <h2 className="hero-title" style={{ marginBottom: 24 }}>
+          The <span className="hero-accent">Manifesto</span>
+        </h2>
         <section>
           <p>The Agent Web is a structural shift in how the internet is consumed.</p>
           <p><strong>Humans browse pages. AI agents execute workflows.</strong></p>
