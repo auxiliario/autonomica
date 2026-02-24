@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import SignalsFeed from "./SignalsFeed";
 import { getAllSignals } from "@/lib/signals";
 
@@ -14,7 +12,7 @@ export default function SignalsPage() {
 
   return (
     <>
-      <Nav active="signals" />
+      
 
       <div className="page-header">
         <div className="page-title">Signals</div>
@@ -31,7 +29,7 @@ export default function SignalsPage() {
         <SignalsFeed signals={signals} />
       </div>
 
-      <Footer />
+      
     </>
   );
 }

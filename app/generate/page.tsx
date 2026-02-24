@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 
 const CONTENT_TYPES = ["documentation", "api reference", "blog/articles", "datasets", "research papers"];
 const PRICING_MODELS = ["free tier", "per-request (402)", "subscription"];
@@ -98,7 +96,7 @@ export default function GeneratePage() {
 
   return (
     <>
-      <Nav active="tools" />
+      
       <div className="page-header">
         <div className="page-title">Generator</div>
         <p className="page-desc">
@@ -204,7 +202,7 @@ export default function GeneratePage() {
         </div>
       </div>
 
-      <Footer />
+      
     </>
   );
 }

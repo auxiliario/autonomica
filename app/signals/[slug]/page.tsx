@@ -1,8 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import { getAllSignalSlugs, getSignalBySlug, getAllSignals, renderMarkdown } from "@/lib/signals";
 
 export async function generateStaticParams() {
@@ -42,7 +40,7 @@ export default async function SignalPage({
 
   return (
     <>
-      <Nav active="signals" />
+      
 
       {/* Breadcrumb */}
       <div className="breadcrumb">
@@ -139,7 +137,7 @@ export default async function SignalPage({
         </>
       )}
 
-      <Footer />
+      
     </>
   );
 }

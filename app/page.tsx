@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import ToolCard from "@/components/ToolCard";
 import HomeSignals from "@/components/HomeSignals";
 import { getAllSignals } from "@/lib/signals";
@@ -17,7 +15,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Nav active="home" />
+      
 
       {/* HERO */}
       <div className="hero">
@@ -28,9 +26,9 @@ export default function HomePage() {
           Ecosystem signals, publisher tools, and the specification for
           structured AI agent content. Updated daily.
         </p>
-        <div className="learn-callout">
-          <span className="learn-text"># New to AI agents?</span>
-          <Link href="/learn" className="learn-link">Start here →</Link>
+        <div className="learn-callout-hero">
+          <span className="learn-callout-text"># New to AI agents?</span>
+          <Link href="/learn" className="learn-callout-link">Start here →</Link>
         </div>
       </div>
 
@@ -57,6 +55,9 @@ export default function HomePage() {
 
       {/* MANIFESTO */}
       <div className="manifesto" id="manifesto" style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px 48px" }}>
+        <div className="section-header">
+          <span className="section-title">Manifesto</span>
+        </div>
         <section>
           <p>The Agent Web is a structural shift in how the internet is consumed.</p>
           <p><strong>Humans browse pages. AI agents execute workflows.</strong></p>
@@ -215,7 +216,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <Footer />
+      
     </>
   );
 }

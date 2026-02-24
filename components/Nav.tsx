@@ -1,12 +1,19 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 import LangSwitcher from "./LangSwitcher";
 
-interface NavProps {
-  active?: "home" | "signals" | "tools" | "learn" | "manifesto";
-}
+export default function Nav() {
+  const pathname = usePathname();
 
-export default function Nav({ active }: NavProps) {
+  const active = pathname === "/" ? "home"
+    : pathname.startsWith("/learn") ? "learn"
+    : pathname.startsWith("/signals") ? "signals"
+    : pathname.startsWith("/generate") || pathname.startsWith("/validate") || pathname.startsWith("/estimate") || pathname.startsWith("/inspect") ? "tools"
+    : null;
+
   const cl = (name: string) =>
     `nav-link${active === name ? " nav-link-active" : ""}`;
 
@@ -25,10 +32,10 @@ export default function Nav({ active }: NavProps) {
         <div className="nav-row-right">
           <span className="nav-row-label">for humans</span>
           <Link href="/" className={cl("home")}>Home</Link>
-          <Link href="/signals" className={cl("signals")}>Signals</Link>
-          <Link href="/generate" className={cl("tools")}>Tools</Link>
           <Link href="/learn" className={cl("learn")}>Learn</Link>
-          <Link href="/#manifesto" className={cl("manifesto")}>Manifesto</Link>
+          <Link href="/signals" className={cl("signals")}>Signals</Link>
+          <Link href="/#tools" className={cl("tools")}>Tools</Link>
+          <Link href="/#manifesto" className="nav-link">Manifesto</Link>
         </div>
       </div>
       <div className="nav-row">

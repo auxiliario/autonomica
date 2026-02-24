@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 
 interface CheckResult {
   label: string;
@@ -92,7 +90,7 @@ export default function ValidatePage() {
 
   return (
     <>
-      <Nav active="tools" />
+      
       <div className="page-header">
         <div className="page-title">Validator</div>
         <p className="page-desc">
@@ -161,7 +159,7 @@ export default function ValidatePage() {
         </div>
       </div>
 
-      <Footer />
+      
     </>
   );
 }

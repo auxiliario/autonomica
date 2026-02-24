@@ -237,6 +237,26 @@ strong { color: var(--text-bright); font-weight: 600; }
 .learn-link { color: var(--accent); }
 .learn-link:hover { text-decoration: underline; }
 
+/* Learn callout - hero variant (bigger, bolder) */
+.learn-callout-hero {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--mono);
+  margin-top: 20px;
+}
+.learn-callout-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-bright);
+}
+.learn-callout-link {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.learn-callout-link:hover { text-decoration: underline; }
+
 /* ── PAGE HEADER (inner pages) ── */
 .page-header { max-width: 720px; margin: 0 auto; padding: 40px 24px 8px; }
 .page-title {

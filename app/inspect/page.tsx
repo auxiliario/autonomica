@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 
 interface ProbeResult {
   path: string;
@@ -93,7 +91,7 @@ export default function InspectPage() {
 
   return (
     <>
-      <Nav active="tools" />
+      
       <div className="page-header">
         <div className="page-title">Inspector</div>
         <p className="page-desc">
@@ -174,7 +172,7 @@ export default function InspectPage() {
         </div>
       </div>
 
-      <Footer />
+      
     </>
   );
 }

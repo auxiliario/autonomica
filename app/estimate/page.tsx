@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 
 export default function EstimatePage() {
   const [pages, setPages] = useState("1000");
@@ -29,7 +27,7 @@ export default function EstimatePage() {
 
   return (
     <>
-      <Nav active="tools" />
+      
       <div className="page-header">
         <div className="page-title">Token Estimator</div>
         <p className="page-desc">
@@ -122,7 +120,7 @@ export default function EstimatePage() {
         </div>
       </div>
 
-      <Footer />
+      
     </>
   );
 }
