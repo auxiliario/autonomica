@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "crons": [
+    {
+      "path": "/api/cron/signals",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/cron/reprobe",
+      "schedule": "0 3 * * 0"
+    }
+  ]
+}

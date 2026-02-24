@@ -1,0 +1,61 @@
+{
+  "name": "Autonomica",
+  "url": "https://autonomi.ca",
+  "description": "The directory, specification, and signal feed for the Agent Web.",
+  "version": "0.1.0",
+  "updated": "2026-02-23",
+  "documents": [
+    {
+      "id": "manifesto",
+      "title": "The Agent Web Manifesto",
+      "path": "/agent/docs/manifesto.md",
+      "format": "markdown",
+      "description": "Why the internet is restructuring around AI agent consumption.",
+      "topics": ["agent web", "HTTP 402", "llms.txt", "micropayments"]
+    },
+    {
+      "id": "spec",
+      "title": "Agent-Facing Content Specification",
+      "path": "/agent/docs/spec.md",
+      "format": "markdown",
+      "description": "Technical specification for agent-facing content architecture.",
+      "topics": ["specification", "llms.txt", "index.json", "pricing.json"]
+    },
+    {
+      "id": "pricing-guide",
+      "title": "Pricing Guide",
+      "path": "/agent/docs/pricing-guide.md",
+      "format": "markdown",
+      "description": "How to price agent-facing content using HTTP 402.",
+      "topics": ["HTTP 402", "pricing", "micropayments"]
+    },
+    {
+      "id": "security",
+      "title": "Security Model",
+      "path": "/agent/docs/security.md",
+      "format": "markdown",
+      "description": "The Instruction Authority Model for agent-safe publishing.",
+      "topics": ["security", "prompt injection", "trust"]
+    },
+    {
+      "id": "trust",
+      "title": "Trust Framework",
+      "path": "/agent/docs/trust.md",
+      "format": "markdown",
+      "description": "Trust tiers and verification for agent-ready sites.",
+      "topics": ["trust", "verification", "directory"]
+    }
+  ],
+  "endpoints": {
+    "signals": "/signals",
+    "directory": "/directory",
+    "probe": "/api/probe",
+    "search": "/api/search"
+  },
+  "tools": [
+    { "id": "generator", "path": "/generate", "description": "Generate agent-facing file structure" },
+    { "id": "validator", "path": "/validate", "description": "Validate llms.txt and index.json" },
+    { "id": "estimator", "path": "/estimate", "description": "Estimate token count and revenue" },
+    { "id": "inspector", "path": "/inspect", "description": "Check any domain for agent-readiness" }
+  ]
+}

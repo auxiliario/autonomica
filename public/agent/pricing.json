@@ -1,0 +1,46 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-02-23",
+  "currency": "USD",
+  "note": "Autonomica is protocol-agnostic. Pricing metadata supports any 402 implementation.",
+  "tiers": {
+    "free": {
+      "description": "Public signal feed, tools, specification documents, directory browsing.",
+      "endpoints": [
+        "/llms.txt",
+        "/agent/index.json",
+        "/agent/docs/*",
+        "/signals",
+        "/signals/*",
+        "/generate",
+        "/validate",
+        "/estimate",
+        "/inspect",
+        "/directory"
+      ],
+      "rate_limit": "100 requests/hour"
+    },
+    "paid": {
+      "description": "Full directory intelligence, probe API, batch queries. HTTP 402 enforced.",
+      "status": "coming_phase_2",
+      "endpoints": [
+        "/api/probe",
+        "/api/site/*",
+        "/api/search",
+        "/api/compare"
+      ],
+      "pricing_model": "per-request",
+      "price_range": {
+        "min": 0.0005,
+        "max": 0.005,
+        "unit": "USD per request"
+      }
+    }
+  },
+  "supported_protocols": [
+    "x402",
+    "lightning",
+    "stripe",
+    "other"
+  ]
+}

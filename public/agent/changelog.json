@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "date": "2026-02-23",
+      "summary": "Initial launch. Signal feed, publisher tools, specification documents, agent-facing layer.",
+      "changes": [
+        "Signal feed with 6-dimension taxonomy",
+        "Publisher tools: generator, validator, estimator, inspector",
+        "Agent-facing endpoints: llms.txt, index.json, pricing.json",
+        "Specification documents: manifesto, spec, pricing guide, security model, trust framework",
+        "Directory stub (Phase 2)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+# Autonomica
+# The directory and discovery layer for the Agent Web.
+
+> site_name: Autonomica
+> description: The directory, specification, and signal feed for the Agent Web — where AI agents find, evaluate, and pay for structured content.
+> url: https://autonomi.ca
+
+# Documents
+> doc: /agent/docs/manifesto.md  — The Agent Web thesis. Why the internet is restructuring around AI agent consumption.
+> doc: /agent/docs/spec.md  — Technical specification for agent-facing content architecture.
+> doc: /agent/docs/pricing-guide.md  — How to price agent-facing content using HTTP 402.
+> doc: /agent/docs/security.md  — The Instruction Authority Model for agent-safe publishing.
+> doc: /agent/docs/trust.md  — Trust tiers and verification for agent-ready sites.
+
+# Endpoints
+> index: /agent/index.json
+> pricing: /agent/pricing.json
+> changelog: /agent/changelog.json
+
+# Signals
+> feed: /signals  — Continuously updated intelligence from the agent commerce ecosystem.
+
+# Tools
+> tool: /generate  — Generate agent-facing file structure for any site.
+> tool: /validate  — Validate llms.txt and index.json for spec compliance.
+> tool: /estimate  — Estimate token count and revenue for agent-facing content.
+> tool: /inspect  — Check any domain for agent-readiness.
+
+# Directory
+> directory: /directory  — Browse the live registry of agent-ready sites.
+> api: /api/probe  — POST: Probe a domain for agent-readiness.
+> api: /api/search  — GET: Search directory by topic.
