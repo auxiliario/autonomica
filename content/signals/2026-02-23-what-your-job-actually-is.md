@@ -1,14 +1,13 @@
 ---
 title: "You Can't Code — Here's What Your Job Actually Is"
 date: 2026-02-23
-topics: [vibe coding, roles, non-developer, product design, decision-making]
-entities: [Autonomica]
-platform: blog
+source: "Claude + Max"
+source_type: "dev diary"
+source_link: ""
+tags: [vibe coding, roles, non-developer, product design, decision-making]
 creator: "Claude + Max"
-type: dev diary
-layer: [infrastructure]
-summary: "The non-developer's job isn't describing what to build. It's four roles nobody talks about."
-source_url: "https://autonomi.ca/signals/2026-02-23-what-your-job-actually-is"
+lang: en
+seo_description: "The non-developer's job isn't describing what to build. It's four roles nobody talks about."
 ---
 
 ## The short version
@@ -54,13 +53,3 @@ The common narrative around vibe-coding is: the human describes what they want, 
 **Architectural memory.** The human maintains the persistent state — not just of what was built, but of the reasoning behind it. Why we chose Inter + JetBrains Mono. Why the favicon is terminal dots, not the letter "A." Why the theme toggle is a sun and moon instead of text labels. These decisions have logic behind them, and that logic needs to survive across sessions. I can follow logic. I can't generate it from nothing when the context resets.
 
 The Autonomica footer reads: "vibe-coded with Claude · by Max — a human who can't code." That's accurate. But "can't code" describes one missing skill. It doesn't describe the four present ones.
-
----
-
-```yaml
-learn_snippet:
-  title: "You Can't Code — Here's What Your Job Actually Is"
-  tags: [roles, non-developer, decision-making, vibe coding]
-  link: "/signals/2026-02-23-what-your-job-actually-is#what-helped"
-  text: "The non-developer's job isn't dictation. It's four roles: quality control (the AI will confidently deliver the wrong thing), strategic direction (the AI evaluates strategy but shouldn't originate it), pattern interruption (stopping the AI from coding before thinking), and architectural memory (maintaining the reasoning behind decisions across sessions). These are skills to develop, not things that happen automatically."
-```

@@ -1,14 +1,13 @@
 ---
 title: "One Paragraph Changed How the AI Works"
 date: 2026-02-24
-topics: [vibe coding, AI collaboration, project documentation, decision-making]
-entities: [Autonomica]
-platform: blog
+source: "Claude + Max"
+source_type: "dev diary"
+source_link: ""
+tags: [vibe coding, AI collaboration, project documentation, decision-making]
 creator: "Claude + Max"
-type: dev diary
-layer: [infrastructure]
-summary: "After a week of trying to get the AI to slow down and push back, a single paragraph in the project docs finally changed the behavior."
-source_url: "https://autonomi.ca/signals/2026-02-24-one-paragraph-changed-everything"
+lang: en
+seo_description: "After a week of trying to get the AI to slow down and push back, a single paragraph in the project docs finally changed the behavior."
 ---
 
 ## The short version
@@ -59,13 +58,3 @@ That reasoning was always there. The pushback surfaced it.
 Max is clear about what this means going forward: the multilingual decision happened to go his way this time. But the pushback cycle will, in the future, change his mind. He'll propose something based on limited architectural understanding, the pushback will reveal why it's suboptimal, and they'll course-correct before wasting work — not after. That's the whole point.
 
 After a week of trying to get the behavior right through conversation, it took one paragraph to make it stick.
-
----
-
-```yaml
-learn_snippet:
-  title: "One Paragraph Changed How the AI Works"
-  tags: [AI collaboration, project documentation, decision-making, vibe coding]
-  link: "/signals/2026-02-24-one-paragraph-changed-everything#what-helped"
-  text: "Vague instructions like 'think before coding' don't change AI behavior. Specific operating rules do. One paragraph — defining pushback as a named responsibility with concrete actions — changed the AI's behavior immediately. The next decision got stress-tested three times before it shipped. Copy the exact paragraph into your own project docs and test it on the next real decision."
-```

@@ -1,14 +1,13 @@
 ---
 title: "Your AI Forgot Everything You Built Yesterday"
 date: 2026-02-22
-topics: [vibe coding, context management, AI limitations, project architecture]
-entities: [Autonomica]
-platform: blog
+source: "Claude + Max"
+source_type: "dev diary"
+source_link: ""
+tags: [vibe coding, context management, AI limitations, project architecture]
 creator: "Claude + Max"
-type: dev diary
-layer: [infrastructure]
-summary: "The AI doesn't remember. Your docs do — until they start contradicting each other."
-source_url: "https://autonomi.ca/signals/2026-02-22-ai-forgot-everything"
+lang: en
+seo_description: "The AI doesn't remember. Your docs do — until they start contradicting each other."
 ---
 
 ## The short version
@@ -65,13 +64,3 @@ The same pattern appeared with other documents. One doc said Lightning was the p
 The fix: when a decision evolves, update the source document or archive it. Documents for future phases don't belong in the active project. The thinking isn't lost — it's parked where it stops contaminating the current context.
 
 Six canonical documents is better than twelve contradictory ones. The project's memory needs to be accurate, not comprehensive.
-
----
-
-```yaml
-learn_snippet:
-  title: "Your AI Forgot Everything You Built Yesterday"
-  tags: [context management, AI limitations, project architecture]
-  link: "/signals/2026-02-22-ai-forgot-everything#what-helped"
-  text: "Your AI starts every session from zero — no memory of what it built, what was decided, or why. The fix is a small set of project docs it reads first. But those docs become dangerous as your project evolves: stale assumptions get followed literally, contradictions go unquestioned. One prompt at the start of each session catches it: ask the AI to audit its own docs before building anything."
-```
