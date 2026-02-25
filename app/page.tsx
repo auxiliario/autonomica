@@ -13,9 +13,41 @@ const TOOLS = [
 export default function HomePage() {
   const signals = getAllSignals();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Autonomica",
+    url: "https://autonomi.ca",
+    description:
+      "The directory and discovery layer for the Agent Web. AI agents find, evaluate, and pay for structured content.",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://autonomi.ca/signals?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  const orgLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Autonomica",
+    url: "https://autonomi.ca",
+    logo: "https://autonomi.ca/icon-512.png",
+    description:
+      "The directory, specification, and signal feed for the Agent Web.",
+    sameAs: [],
+  };
+
   return (
     <>
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }}
+      />
 
       {/* HERO */}
       <div className="hero">

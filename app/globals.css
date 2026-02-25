@@ -53,6 +53,7 @@
 
 /* ── BASE ── */
 html { scroll-behavior: smooth; }
+#manifesto, #tools, #signals { scroll-margin-top: 130px; }
 body {
   background: var(--bg);
   color: var(--text);
