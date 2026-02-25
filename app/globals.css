@@ -632,6 +632,221 @@ strong { color: var(--text-bright); font-weight: 600; }
 .shift-arrow { color: var(--text-dim); padding: 0 10px; }
 .shift-new { color: var(--accent); }
 
+/* ── SIGNAL BODY (individual signal pages — markdown rendering) ── */
+
+/* -- Paragraphs -- */
+.signal-body p {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 16px;
+  max-width: 65ch;
+}
+
+/* -- Section headers (H2): "The short version", "The lesson", etc. -- */
+.signal-body h2 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 48px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.signal-body h2:first-child {
+  margin-top: 0;
+}
+
+/* -- Sub-headers (H3): labels within sections -- */
+.signal-body h3 {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+/* -- H4: rare, but handle gracefully -- */
+.signal-body h4 {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+/* -- Blockquotes: copy-paste callout cards -- */
+.signal-body blockquote {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 20px 24px;
+  margin: 24px 0;
+  position: relative;
+}
+
+.signal-body blockquote::before {
+  content: 'copy-paste';
+  position: absolute;
+  top: -9px;
+  left: 16px;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--bg-card);
+  padding: 0 6px;
+}
+
+.signal-body blockquote p {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--text-bright);
+  margin-bottom: 0;
+  max-width: none;
+}
+
+.signal-body blockquote p + p {
+  margin-top: 12px;
+}
+
+.signal-body blockquote em {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* -- Inline code -- */
+.signal-body code {
+  font-family: var(--mono);
+  font-size: 0.84em;
+  background: var(--bg-code);
+  color: var(--accent);
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+
+/* -- Code blocks -- */
+.signal-body pre {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px 24px;
+  overflow-x: auto;
+  margin: 20px 0 24px;
+  line-height: 1.55;
+}
+
+.signal-body pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+/* -- Lists -- */
+.signal-body ul {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.signal-body ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.signal-body li {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 8px;
+  max-width: 65ch;
+}
+
+.signal-body li::marker {
+  color: var(--text-dim);
+}
+
+/* -- Bold text -- */
+.signal-body strong {
+  color: var(--text-bright);
+  font-weight: 600;
+}
+
+/* -- Emphasis -- */
+.signal-body em {
+  color: var(--text);
+  font-style: italic;
+}
+
+/* -- Links -- */
+.signal-body a {
+  color: var(--accent);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.signal-body a:hover {
+  text-decoration: underline;
+}
+
+/* -- Horizontal rules -- */
+.signal-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+/* -- Images (if any) -- */
+.signal-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+/* -- Tables (if any) -- */
+.signal-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.85rem;
+}
+
+.signal-body th {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--border-bright);
+}
+
+.signal-body td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+
 /* ── EMAIL CAPTURE ── */
 .email-section {
   text-align: center; padding: 40px 24px;
@@ -725,4 +940,10 @@ strong { color: var(--text-bright); font-weight: 600; }
   .email-form { flex-direction: column; }
   .footer { flex-direction: column; gap: 12px; padding: 24px 16px; }
   .shift-old { width: 110px; }
+
+  /* Signal body mobile */
+  .signal-body h2 { margin-top: 36px; }
+  .signal-body blockquote { padding: 16px 18px; margin: 20px 0; }
+  .signal-body blockquote p { font-size: 0.78rem; }
+  .signal-body pre { padding: 16px 18px; }
 }
