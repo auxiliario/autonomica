@@ -1,7 +1,9 @@
 # PROJECT-STATE.md — Autonomica Ground Truth
 
-**Last updated**: 2026-02-24
+**Last updated**: 2026-02-26
 **Read this first in every new window.**
+
+Re-evaluate this document when the project's direction shifts. It describes current state — it does not constrain future decisions.
 
 ---
 
@@ -10,14 +12,14 @@
 Autonomica (autonomi.ca) is the directory and discovery layer for the Agent Web. Three products:
 
 1. **Directory** — live, scored registry of agent-ready sites with HTTP 402 micropayments
-2. **Signal** — auto-published intelligence feed tracking agent commerce ecosystem (SEO engine)
+2. **Signal** — auto-processed intelligence feed tracking agent commerce ecosystem, with 7-pass critical analysis (SEO engine + research database)
 3. **Specification** — canonical docs for llms.txt, /agent/ endpoints, HTTP 402
 
 Built by Auxiliar.io (Max). One repo, one deploy, Next.js on Vercel.
 
 ---
 
-## Current State: Next.js — Live on Vercel
+## Current State: Next.js — Deployed
 
 The site has been migrated from static HTML to Next.js. Deployed at autonomi.ca via GitHub repo `auxiliario/autonomica`, branch `main`.
 
@@ -27,18 +29,18 @@ The site has been migrated from static HTML to Next.js. Deployed at autonomi.ca 
 - `layout.tsx` renders Nav and Footer globally — no page imports them
 - Nav auto-detects active page from URL via `usePathname()` — no props
 - All page files contain only their own content
-- Unified design system in `app/globals.css` (single CSS file, all pages)
+- Unified design system in `app/globals.css`
 - Default theme: light. Toggle persists via `localStorage('autonomica-theme')`
 
 **Pages:**
-- `/` — Homepage: hero, bold learn callout, signals with 6 filter pills, tools grid, manifesto with section header, email capture
-- `/signals` — Feed with 6-dimension filters + pagination
+- `/` — Homepage: hero, bold learn callout with dividers, signals with 6 filter pills, tools grid, manifesto with hero-style header, email capture
+- `/signals` — Feed with filters + pagination
 - `/signals/[slug]` — Individual signal with markdown rendering, tags, related signals
 - `/generate` — Generator tool (form, live preview, tabbed output, download)
 - `/validate` — Validator tool (paste llms.txt or index.json, pass/fail/warn checks)
 - `/estimate` — Token estimator (revenue projections, stat cards)
 - `/inspect` — Inspector (domain probe for agent-readiness, links to generator)
-- `/directory` — Stub page (Phase 2)
+- `/directory` — Stub page
 - `/learn` — Stub page (content approved in shell phase, not yet wired)
 
 **Nav order (3 rows, sticky):**
@@ -51,15 +53,20 @@ Row 3: for agents  llms.txt  agent/  pricing  changelog
 - Manifesto → scrolls to `/#manifesto`
 - Learn, Signals → page links
 
+**SEO:**
+- JSON-LD structured data (WebSite + Organization)
+- Dynamic sitemap.ts generates sitemap.xml from all pages + signals
+- robots.txt, OG image, Twitter card, canonical URL
+- Favicons: .ico, 16px, 32px, 512px
+
 **Signals:**
 - 5 seed signals in `content/signals/` (markdown with frontmatter)
 - Read at build time by `lib/signals.ts` (gray-matter + remark)
-- Date fields converted via `toStr()` helper to avoid Date object rendering errors
 
 **Agent layer (static in `/public`):**
 - `llms.txt` — agent routing manifest
 - `agent/index.json` — document registry
-- `agent/pricing.json` — pricing tiers (free + paid Phase 2)
+- `agent/pricing.json` — pricing tiers
 - `agent/changelog.json` — version history
 - `agent/docs/` — manifesto.md, spec.md, pricing-guide.md, security.md, trust.md
 
@@ -70,45 +77,92 @@ Row 3: for agents  llms.txt  agent/  pricing  changelog
 - `LangSwitcher.tsx` — dropdown (EN/FR/ES/PT/DE), UI only
 - `SignalCard.tsx` — signal card for feeds
 - `ToolCard.tsx` — terminal-style card for homepage grid
-- `FilterPills.tsx` — custom dropdown pill filters (not native select)
+- `FilterPills.tsx` — custom dropdown pill filters
 - `HomeSignals.tsx` — client component wrapping signals + filters on homepage
 
 **Config:**
-- `vercel.json` — daily crons (hobby plan), cleanUrls
+- `vercel.json` — cleanUrls
 - `next.config.ts` — CORS headers for agent endpoints
+- `sitemap.ts` — auto-generated from pages + signals
+- `robots.txt` — allows all, points to sitemap
 
 ### What's NOT built yet
 
-- `/learn` content (shell approved, glossary as accordion cards — deferred)
-- Signal integrations/fetchers (cron stubs exist, no actual fetchers)
+- `/learn` content (shell approved, glossary as accordion cards)
+- Signal pipeline (architecture decided, implementation pending)
+- Supabase integration (schema designed, not created)
+- GitHub Actions workflow for pipeline
+- Signal page redesign to show full intelligence brief (all passes)
 - Directory API routes (stubs only)
 - i18n routing (lang switcher is UI-only)
 - Email capture backend
 - 6-dimension signal taxonomy (using flat `tags[]` for now)
-- Python pipeline integration with Next.js
+- Derivative products (weekly brief, trend tracking, etc.)
 
 ---
 
-## Decisions Locked
+## Pipeline Decisions (Feb 2026)
 
-- **Nav + Footer in layout.tsx.** Global. No per-page imports.
-- **Nav detects active from URL.** No props needed.
-- **Light theme default.**
-- **Custom pill dropdowns everywhere.** Never native `<select>`.
-- **Inter + JetBrains Mono.** Inter for reading, JetBrains Mono for chrome.
-- **Max width 720px** for all content.
-- **Footer:** © autonomi.ca / vibe-coded with Claude · by Max / — a human who can't code, / what a time to be alive. Max links to `/learn`.
-- **Learn callout on homepage:** Bold, 1rem, between hero and signals.
-- **Tools and Manifesto nav links** scroll to homepage sections, not separate pages.
+Decided through analysis and comparative testing. See ARCHITECTURE.md for technical detail.
 
-## Decisions Deferred
+| Decision | Rationale | Date |
+|----------|-----------|------|
+| Gemini 3.0 Flash Preview for pipeline | Tested against 5 models on metamarkets WEB 4.0 article. Best signal identification + criticism quality at lowest cost ($0.00093/signal). | 2026-02-26 |
+| 7-pass analysis prompt | Summarize → Stood Out → Quotables → Criticize → Expand → Signal JSON → Source Metadata. Produces intelligence briefs, not just summaries. Tested and validated. | 2026-02-26 |
+| Supabase for storage | Content funnel: store all signals (raw, scored, processed, published). Column-per-pass schema enables derivative products. Replaces Vercel KV plan. | 2026-02-26 |
+| GitHub Actions for scheduling | Runs every 6 hours, commits published signals to repo, Vercel auto-deploys. Avoids Vercel ephemeral filesystem. | 2026-02-26 |
+| Manual publish review | Pipeline processes everything. Founder reviews and publishes. No auto-publish, no predetermined cadence. Volume emerges from use. | 2026-02-26 |
+| Column-per-pass storage | Each analysis pass stored as separate column in Supabase. Enables SQL queries for derivative products. | 2026-02-26 |
+| Source metadata extraction (Pass 7) | Keyword frequency, entities, persons, claims with numbers, source links, content flags (code, data tables, API refs). Enables deep research queries. | 2026-02-26 |
+| Paid Substack subscriptions as inputs | ~$80 CAD/mo for 3 paid sources. ROI measured by pipeline data (hit rate, relevance per source). Content used as input to analysis, not repackaged. | 2026-02-26 |
+| YouTube transcripts via youtube-transcript-api | Free, transforms Tier 1 YouTube sources from title-only to full-content signals. | 2026-02-26 |
+| Title similarity for dedup | Simple, zero cost. Embedding similarity later if volume warrants. | 2026-02-26 |
 
-- **Merge `/learn` and Max's personal manifesto into one page.** Both serve non-dev audience.
-- **Glossary as accordion/dropdown cards.** Each term is a collapsible card. Implement when building `/learn`.
-- Signal tag taxonomy: flat `tags[]` → 6-dimension. Requires pipeline prompt update.
-- Directory scoring model: weights and components TBD.
-- 402 payment protocol: architecture is protocol-agnostic. Phase 2.
-- Email capture backend: wire to a real service later.
+### Model Comparison Results (Feb 2026)
+
+Tested on: "WEB 4.0: The Day the Machine Became the Customer" by Jose Rodriguez / metamarkets (Feb 25, 2026).
+
+| Model | Cost/signal | Quality Assessment |
+|-------|-------------|-------------------|
+| Gemini 3.0 Flash Preview | $0.00093 | **Best overall value.** Sharpest signal identification, original criticism ("vanity metric" reframe), consistent across 2 runs. |
+| Gemini 2.5 Flash | $0.0013 | Solid floor. Unique principal-agent liability insight. Good for volume. |
+| Gemini 3.1 Pro | $0.024 | Polished, correct. "Wallet is useless without a map." Not 26x better than Flash 3.0. |
+| Claude Haiku 4.5 | ~$0.025 | Surprise performer. 80% of Sonnet depth at 1/3 cost. Sharp logical criticism. |
+| Claude Sonnet 4.5 | ~$0.068 | Deepest thinker. 7 distinct criticisms, original "llms.txt + x402 = Agent Web stack" synthesis. 73x more expensive than Flash 3.0. |
+
+**Decision:** Gemini 3.0 Flash Preview for pipeline. Best summary quality (went straight to x402, didn't bury lead). Claude models buried the lead in Crustafarian anecdote.
+
+---
+
+## Decisions Log (Site/Architecture)
+
+Current decisions with rationale. Not permanent — but changing them requires explicit discussion, not silent drift.
+
+| Decision | Rationale | Date |
+|----------|-----------|------|
+| Nav + Footer in layout.tsx | Every page inherits them. No forgotten imports. One place to edit. | 2026-02-24 |
+| Nav detects active from URL | No props needed. Adding pages doesn't require Nav changes. | 2026-02-24 |
+| Light theme default | User preference. Dark available via toggle. | 2026-02-23 |
+| Custom pill dropdowns, never native `<select>` | Native selects render differently per device. Custom pills match the design system. | 2026-02-23 |
+| Inter + JetBrains Mono | Inter for readability, JetBrains Mono for terminal/chrome elements. | 2026-02-23 |
+| Max width 720px | Clean reading measure. Matches terminal aesthetic. | 2026-02-23 |
+| One repo, one deploy | No operational overhead. Split only if a measured reason appears. | 2026-02-23 |
+| Supabase for all storage | Signals + directory in one database. Replaces Vercel KV plan. | 2026-02-26 |
+| Flat tags instead of 6-dimension taxonomy | Simpler. Works at current signal volume. Filter UI already supports 6 dimensions. | 2026-02-23 |
+| Tools and Manifesto nav links scroll to homepage sections | They're homepage content, not separate pages. | 2026-02-24 |
+| Footer: Max links to /learn | /learn is the non-dev entry point. Personal manifesto merges there later. | 2026-02-24 |
+| Shell → Wire workflow | Design feedback happens on layout, not logic. Prevents throwaway code. | 2026-02-23 |
+
+### Deferred decisions (no action yet, revisit when relevant)
+
+- Merge `/learn` and Max's personal manifesto into one page
+- Glossary as accordion/dropdown cards on `/learn`
+- Signal tag taxonomy migration to 6-dimension
+- Directory scoring model weights
+- 402 payment protocol implementation
+- Email capture backend
+- Signal page format (how much of 7-pass analysis to show publicly)
+- Derivative product priority beyond weekly brief
 
 ---
 
@@ -137,15 +191,19 @@ Row 3: for agents  llms.txt  agent/  pricing  changelog
 ### Visual patterns
 - Signal cards: bg-card background, border, accent on hover
 - Tool cards: Terminal style with red/yellow/green dots, `> run` prompt
-- Manifesto headings: `## ` and `### ` prefix in dim color
+- Manifesto heading: hero-title style with accent color
 - Trust levels: Colored left border (green/yellow/red)
 - Highlight boxes: Accent left border, raised background
+- Learn callout: Bold, divider lines above and below
+- Scroll anchors: 130px scroll-margin-top to clear sticky nav
 
 ---
 
 ## Brand Voice
 
 **Dev diary signals:** Written in Claude's voice, first person, during active build sessions. Max triggers by saying "let's do a diary entry." Full guide in BUILD-LOG-GUIDE.md.
+
+**Signal intelligence briefs:** Written by Gemini via 7-pass pipeline. Sharp, specific, critical. No hype, no filler. The criticism pass is the editorial voice that differentiates Autonomica from aggregators.
 
 **Learn page (`/learn`):** Non-dev entry point. Four sections approved in shell:
 1. What are AI agents? — Plain language
@@ -163,15 +221,7 @@ Row 3: for agents  llms.txt  agent/  pricing  changelog
 
 **User is the founder.** Strategic direction, business decisions, quality control.
 
-### Rules
-1. **Think before coding.** Discuss implications before executing.
-2. **Read PROJECT-STATE.md first** in every new window.
-3. **Never produce code without confirmation.**
-4. **NEVER rush to build.** Gather ALL files/context first.
-5. **Don't modify the Python signal pipeline** without explicit discussion.
-
-### Translation rules
-Keep English tech terms in all translations unless widely adopted local alternative exists.
+See CLAUDE.md for full operating rules, including the pushback principle and re-evaluation triggers.
 
 ---
 
@@ -191,10 +241,16 @@ Keep English tech terms in all translations unless widely adopted local alternat
 
 ## Next Steps (Priority Order)
 
-1. **Signal integrations** — build fetchers from `autonomica-signal-integrations.md`. These generate SEO.
-2. **Wire `/learn` page** — content approved in shell, glossary as accordion cards
-3. **Directory API routes** — probe function, Vercel KV storage
-4. **i18n routing** — connect lang switcher to actual routes
+1. **Build signal pipeline** — Python script with 7-pass Gemini prompt, Supabase storage, GitHub Actions
+2. **Create Supabase schema** — signals table with column-per-pass, sources table
+3. **Test pipeline on live sources** — run against real RSS feeds, validate output quality
+4. **Wire Supabase → Next.js** — update `lib/signals.ts` to read published signals from Supabase
+5. **Redesign signal pages** — show full intelligence brief (all readable passes)
+6. **Wire `/learn` page** — content approved in shell, glossary as accordion cards
+7. **Weekly intelligence brief** — first derivative product
+8. **i18n subpath routing** — all human-facing pages in EN/FR/ES/PT/DE
+9. **Signal translation pipeline** — Gemini translates published signals
+10. **Directory API routes** — probe function, Supabase storage
 
 ---
 
@@ -206,18 +262,17 @@ Keep English tech terms in all translations unless widely adopted local alternat
 | Branch | `main` |
 | Host | Vercel |
 | Domain | `autonomi.ca` |
-| Plan | Hobby (daily crons) |
-| Framework | Next.js (auto-detected) |
+| Database | Supabase (TBD: project URL) |
 
 ---
 
-## What NOT To Do
+## Project Documents
 
-- Don't add Nav or Footer imports to page files (they're in layout.tsx)
-- Don't rewrite the Python signal pipeline
-- Don't implement 6-dimension taxonomy yet (flat tags for now)
-- Don't build 402 payment enforcement yet
-- Don't build the trading intelligence feed yet
-- Don't build user accounts
-- Don't split into multiple repos/services
-- Don't use Tailwind (custom CSS system already built)
+| Document | Purpose |
+|----------|---------|
+| CLAUDE.md | Identity, roles, operating rules, pushback principle |
+| ARCHITECTURE.md | Technical architecture with rationale |
+| PRD.md | Product requirements, audiences, success criteria |
+| ROADMAP.md | Phased delivery plan |
+| BUILD-LOG-GUIDE.md | Dev diary entry format, tone, rules |
+| PROJECT-STATE.md | **This file.** Ground truth for window continuity. |
