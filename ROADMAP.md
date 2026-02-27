@@ -4,7 +4,7 @@
 
 ## Phase 1: The Platform (Current)
 
-Migrate from static HTML to Next.js. Build the signal pipeline. Seed the directory. All human-facing content published in 6 languages from the start.
+Migrate from static HTML to Next.js. Build the signal pipeline. Seed the directory. All human-facing content published in 5 languages from the start.
 
 ### Deliverables
 - [x] Next.js project on Vercel with existing design/content migrated

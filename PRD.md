@@ -27,7 +27,7 @@ Autonomica is a Next.js application on Vercel at `autonomi.ca`.
 | Role | What it does |
 |------|-------------|
 | **Directory** | Live, scored registry of agent-ready sites. Probe, query, compare. Free window + 402 depth. |
-| **Signal** | Continuously published intelligence feed tracking the agent commerce ecosystem. 7-pass LLM analysis, critical evaluation, cross-source pattern detection. Published in 6 languages. |
+| **Signal** | Continuously published intelligence feed tracking the agent commerce ecosystem. 7-pass LLM analysis, critical evaluation, cross-source pattern detection. Published in 5 languages. |
 | **Research** | Structured signal database enabling derivative analysis products: weekly briefs, trend tracking, source quality reports, contradiction detection, entity tracking. |
 | **Specification** | Reference implementation and canonical docs for the Agent Web (llms.txt, /agent/ endpoints, HTTP 402). |
 
@@ -196,7 +196,7 @@ The manifesto, spec, pricing guide, security model, and trust framework. These a
 - Code, technical identifiers, file paths
 - English tech terms preserved in all translations per translation rules
 
-**SEO rationale:** Each signal × 6 languages = 6 indexed pages. The signal feed produces new indexed pages daily. Being the first French/Spanish result for emerging agent commerce terms is a land grab in markets with near-zero competition.
+**SEO rationale:** Each signal × 5 languages = 5 indexed pages. The signal feed produces new indexed pages daily. Being the first French/Spanish result for emerging agent commerce terms is a land grab in markets with near-zero competition.
 
 ### 4.8 Design
 
